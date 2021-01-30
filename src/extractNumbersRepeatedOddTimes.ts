@@ -42,14 +42,14 @@ function groupNumbers (listToCheck: number[], groupedNumbers = [] as number[][])
 }
 
 function filterNumbersRepeatedEvenTimes (listToCheck: number[][], filteredNumbers = [] as number[]): number[] {
-  const [head, ...tail] = listToCheck
-  if (head === undefined) {
+  const [groupedNumbers, ...restOfListToCheck] = listToCheck
+  if (groupedNumbers === undefined) {
     return filteredNumbers
   }
   return filterNumbersRepeatedEvenTimes(
-    tail,
-    head.length % 2 !== 0
-      ? [...filteredNumbers, head[0]]
+    restOfListToCheck,
+    groupedNumbers.length % 2 !== 0
+      ? [...filteredNumbers, groupedNumbers[0]]
       : filteredNumbers
   )
 }
