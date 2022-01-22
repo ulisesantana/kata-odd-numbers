@@ -1,4 +1,5 @@
 export const extractNumbersRepeatedOddTimes = pipe(
+  sortNumbersAscending,
   computeRepeatedTimes,
   filterNumbersRepeatedEvenTimes,
   mapToNumber,
@@ -7,6 +8,10 @@ export const extractNumbersRepeatedOddTimes = pipe(
 
 function pipe (...process: Function[]): (input: number[]) => number[] {
   return (input: number[]) => process.reduce((result, fn) => fn(result), input)
+}
+
+function sortNumbersAscending (numbers: number[]): number[] {
+  return numbers.sort((a, b) => a - b)
 }
 
 function computeRepeatedTimes (list: number[]): Array<[number, number]> {
