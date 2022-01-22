@@ -15,12 +15,7 @@ function pipe (...process: Function[]): (input: number[]) => number[] {
 }
 
 function sortList (list: number[]): number[] {
-  return list.sort((a, b) => a > b
-    ? 1
-    : a < b
-      ? -1
-      : 0
-  )
+  return list.sort((a, b) => a - b)
 }
 
 function groupNumbers (listToCheck: number[], groupedNumbers = [] as number[][]): number[][] {
